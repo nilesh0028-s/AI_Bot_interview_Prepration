@@ -8,7 +8,7 @@ async function generateInterviewReportController(req, res) {
         const { selfDescription, jobDescription } = req.body
 
         const report = await generateInterviewReport({
-            resume: resumeContent,
+            resume: resumeContent.text,
             selfDescription,
             jobDescription
         })
