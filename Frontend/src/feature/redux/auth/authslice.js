@@ -7,7 +7,7 @@ const handleUserFulfilled = (state, action) => { state.loading = false; state.us
 
 const authSlice = createSlice({
     name: 'authreducer',
-    initialState: { user: null, loading: false, error: null },
+    initialState: { user: null, loading: true, error: null },
     reducers: {
         clearError: (state) => { state.error = null }
     },
