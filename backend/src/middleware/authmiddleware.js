@@ -3,7 +3,7 @@ const Blacklist = require('../models/blacklistSchema');
 
 const protectRoute = async (req, res, next) => {
     const token = req.cookies.token;
-    if (!token) return res.status(401).json({ message: "Access denied. No token provided." });
+    if (!token) return res.status(401).json({ message: "please login to proceed ." });
 
     const isBlacklisted = await Blacklist.findOne({ token });
     if (isBlacklisted) return res.status(401).json({ message: "Token is invalid. Please login again." });

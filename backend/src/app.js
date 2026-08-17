@@ -1,7 +1,10 @@
 const express= require('express')
 const cookieParser = require('cookie-parser')
 const authrouter=require('./routes/authroutes')
+const interviewrouter= require('./routes/interviewroutes')
 const cors= require("cors")
+
+
 
 const app = express()
 
@@ -13,6 +16,7 @@ app.use(cors({
 }))
 
 app.use('/api/auth',authrouter)
+app.use('/api/interview', interviewrouter)
 
 app.get('/',(req,res)=>{
     res.send("Hello World")
