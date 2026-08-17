@@ -1,17 +1,25 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../auth.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { registerUser } from '../../redux/auth/authThunks'
 
 export default function Register() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { loading } = useSelector(state => state.auth)
   const [formData, setFormData] = useState({ username: '', email: '', password: '' })
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(formData)
+    const result = await dispatch(registerUser(formData))
+    if (registerUser.fulfilled.match(result)) {
+      navigate('/')
+    }
   }
 
   return (
@@ -55,7 +63,9 @@ export default function Register() {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">Register</button>
+          <button type="submit" disabled={loading} className="btn btn-primary w-100">
+            {loading ? 'Registering...' : 'Register'}
+          </button>
         </form>
         <p className="text-center mt-3 mb-0">
           Already have an account? <Link to="/login">Login</Link>
