@@ -1,56 +1,38 @@
 import axios from "axios";
 
+const BASE_URL = 'http://localhost:3000/api/auth'
 
- export async function register(username,email,password) {
+export async function register(username, email, password) {
     try {
-        const response= await axios.post('http://localhost:5000/api/auth/register', {
-            username, 
-            email, 
-            password
-        },{
-            withCredentials:true
-        })
+        const response = await axios.post(`${BASE_URL}/register`, { username, email, password }, { withCredentials: true })
         return response.data
-        
     } catch (error) {
         console.log(error)
     }
-    
 }
-export async function login(email,password) {
-    try {
-        const response= await axios.post('http://localhost:5000/api/auth/login', {
-            email, 
-            password
-        },{
-            withCredentials:true
-        })
-        return response.data
-        
-    } catch (error) {
-        console.log(error)
-    }
 
-}
-export async function token() {
+export async function login(email, password) {
     try {
-        const response= await axios.get('http://localhost:5000/api/auth/logout',{
-            withCredentials:true
-        })
+        const response = await axios.post(`${BASE_URL}/login`, { email, password }, { withCredentials: true })
         return response.data
-        
     } catch (error) {
         console.log(error)
     }
 }
-    
+
+export async function logout() {
+    try {
+        const response = await axios.get(`${BASE_URL}/logout`, { withCredentials: true })
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export async function getme() {
     try {
-        const response= await axios.get('http://localhost:5000/api/auth/get-me',{
-            withCredentials:true
-        })
+        const response = await axios.get(`${BASE_URL}/get-me`, { withCredentials: true })
         return response.data
-        
     } catch (error) {
         console.log(error)
     }
