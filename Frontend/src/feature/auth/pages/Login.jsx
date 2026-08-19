@@ -23,41 +23,54 @@ export default function Login() {
   }
 
   return (
-    <div className="auth-wrapper d-flex justify-content-center align-items-center vh-100">
-      <div className="auth-card card p-4 shadow">
-        <h4 className="text-center mb-4">Login</h4>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+
+        <div className="auth-logo">
+          <div className="auth-logo-icon">
+            <span className="material-symbols-outlined">psychology</span>
+          </div>
+          <span>Cognitive Edge</span>
+        </div>
+
+        <h2 className="auth-title">Welcome back</h2>
+        <p className="auth-subtitle">Sign in to continue your interview prep</p>
+
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label">Email</label>
+          <div className="auth-field">
+            <label className="auth-label">Email</label>
             <input
               type="email"
               name="email"
-              className="form-control"
-              placeholder="Enter email"
+              className="auth-input"
+              placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
               required
             />
           </div>
-          <div className="mb-3">
-            <label className="form-label">Password</label>
+          <div className="auth-field">
+            <label className="auth-label">Password</label>
             <input
               type="password"
               name="password"
-              className="form-control"
-              placeholder="Enter password"
+              className="auth-input"
+              placeholder="Enter your password"
               value={formData.password}
               onChange={handleChange}
               required
             />
           </div>
-          <button type="submit" disabled={loading} className="btn btn-primary w-100">
-            {loading ? 'Logging in...' : 'Login'}
+          <button type="submit" disabled={loading} className="auth-btn">
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
-        <p className="text-center mt-3 mb-0">
-          Don't have an account? <Link to="/register">Register</Link>
+
+        <div className="auth-divider" />
+        <p className="auth-footer">
+          Don't have an account? <Link to="/register">Create one</Link>
         </p>
+
       </div>
     </div>
   )

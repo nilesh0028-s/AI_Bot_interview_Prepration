@@ -23,53 +23,66 @@ export default function Register() {
   }
 
   return (
-    <div className="auth-wrapper d-flex justify-content-center align-items-center vh-100">
-      <div className="auth-card card p-4 shadow">
-        <h4 className="text-center mb-4">Register</h4>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+
+        <div className="auth-logo">
+          <div className="auth-logo-icon">
+            <span className="material-symbols-outlined">psychology</span>
+          </div>
+          <span>Cognitive Edge</span>
+        </div>
+
+        <h2 className="auth-title">Create your account</h2>
+        <p className="auth-subtitle">Start your AI-powered interview prep today</p>
+
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label className="form-label">Username</label>
+            <label className="auth-label">Username</label>
             <input
               type="text"
               name="username"
-              className="form-control"
-              placeholder="Enter username"
+              className="auth-input"
+              placeholder="Enter your username"
               value={formData.username}
               onChange={handleChange}
               required
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">Email</label>
+            <label className="auth-label">Email</label>
             <input
               type="email"
               name="email"
-              className="form-control"
-              placeholder="Enter email"
+              className="auth-input"
+              placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
               required
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">Password</label>
+            <label className="auth-label">Password</label>
             <input
               type="password"
               name="password"
-              className="form-control"
-              placeholder="Enter password"
+              className="auth-input"
+              placeholder="Create a password"
               value={formData.password}
               onChange={handleChange}
               required
             />
           </div>
-          <button type="submit" disabled={loading} className="btn btn-primary w-100">
-            {loading ? 'Registering...' : 'Register'}
+          <button type="submit" disabled={loading} className="auth-btn mt-2">
+            {loading ? 'Creating account...' : 'Create Account'}
           </button>
         </form>
-        <p className="text-center mt-3 mb-0">
-          Already have an account? <Link to="/login">Login</Link>
+
+        <div className="auth-divider" />
+        <p className="auth-footer">
+          Already have an account? <Link to="/login">Sign in</Link>
         </p>
+
       </div>
     </div>
   )
