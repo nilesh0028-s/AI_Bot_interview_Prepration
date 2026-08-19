@@ -1,0 +1,861 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+* { font-family: 'Inter', sans-serif; box-sizing: border-box; }
+
+// ─── Tokens ───────────────────────────────────────────────
+$bg:          #111125;
+$surface:     #111125;
+$sc-low:      #1a1a2e;
+$sc:          #1e1e32;
+$sc-high:     #28283d;
+$sc-highest:  #333348;
+$sc-lowest:   #0c0c1f;
+$primary:     #bec2ff;
+$on-primary:  #181e8b;
+$secondary:   #aec6ff;
+$tertiary:    #d0bcff;
+$on-surface:  #e2e0fc;
+$on-sv:       #c6c5d5;
+$outline:     #908f9e;
+$outline-v:   #464652;
+
+// ─── Root ─────────────────────────────────────────────────
+.ce-root {
+  background: $bg;
+  color: $on-surface;
+  min-height: 100vh;
+}
+
+.ce-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+// ─── Navbar ───────────────────────────────────────────────
+.ce-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background: rgba(17, 17, 37, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+
+  .ce-navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.ce-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .ce-logo-icon {
+    width: 40px;
+    height: 40px;
+    background: #8b93ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(187,194,255,0.2);
+
+    .material-symbols-outlined { color: #1d238f; font-size: 20px; }
+  }
+
+  .ce-logo-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: $on-surface;
+    letter-spacing: -0.01em;
+  }
+}
+
+.ce-nav-links {
+  display: flex;
+  gap: 48px;
+
+  a {
+    font-size: 14px;
+    font-weight: 600;
+    color: $on-sv;
+    text-decoration: none;
+    transition: color 0.2s;
+    &:hover { color: $on-surface; }
+  }
+
+  @media (max-width: 768px) { display: none; }
+}
+
+.ce-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ce-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .material-symbols-outlined { font-size: 18px; color: $on-primary; }
+}
+
+// ─── Buttons ──────────────────────────────────────────────
+.ce-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: $primary;
+  color: $on-primary;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(190,194,255,0.2);
+  transition: all 0.3s;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 40px rgba(190,194,255,0.4);
+    filter: brightness(1.1);
+  }
+
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  &.ce-btn-lg {
+    padding: 16px 32px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+}
+
+// ─── Hero ─────────────────────────────────────────────────
+.ce-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0 48px;
+  overflow: hidden;
+}
+
+.ce-glow {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+
+  &.ce-glow-1 {
+    top: -10%;
+    left: -10%;
+    width: 50%;
+    height: 50%;
+    background: rgba(190,194,255,0.2);
+    filter: blur(150px);
+    opacity: 0.5;
+  }
+
+  &.ce-glow-2 {
+    top: 40%;
+    right: -10%;
+    width: 40%;
+    height: 60%;
+    background: rgba(208,188,255,0.1);
+    filter: blur(120px);
+    opacity: 0.3;
+  }
+}
+
+.ce-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.ce-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ce-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: $sc-high;
+  border-radius: 9999px;
+  width: max-content;
+
+  .ce-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: $primary;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  span:last-child {
+    font-size: 12px;
+    font-weight: 500;
+    color: $on-sv;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+.ce-hero-title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: $on-surface;
+  margin: 0;
+
+  @media (max-width: 768px) { font-size: 32px; }
+}
+
+.ce-gradient-text {
+  background: linear-gradient(90deg, $primary, #a88cf1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.ce-hero-sub {
+  font-size: 18px;
+  line-height: 1.6;
+  color: $on-sv;
+  max-width: 480px;
+  margin: 0;
+}
+
+.ce-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ce-social-proof {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: $on-sv;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.ce-avatars {
+  display: flex;
+
+  .ce-avatar-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    background: $sc-highest;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid $bg;
+    margin-left: -8px;
+
+    &:first-child { margin-left: 0; }
+
+    .material-symbols-outlined { font-size: 14px; color: $primary; }
+
+    &.z3 { z-index: 3; }
+    &.z2 { z-index: 2; }
+    &.z1 { z-index: 1; }
+  }
+}
+
+// ─── AI Card ──────────────────────────────────────────────
+.ce-hero-right {
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 992px) { justify-content: center; }
+}
+
+.ce-ai-card {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(26,26,46,0.5);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+
+.ce-ai-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+
+  .ce-dots {
+    display: flex;
+    gap: 6px;
+    span {
+      width: 12px;
+      height: 12px;
+      border-radius: 9999px;
+      background: $sc-highest;
+    }
+  }
+
+  .ce-analyzing {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $on-sv;
+
+    .material-symbols-outlined { font-size: 16px; }
+  }
+}
+
+.ce-mock-doc {
+  background: $sc;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ce-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: $primary;
+  box-shadow: 0 0 15px rgba(190,194,255,1);
+  animation: scan 3s linear infinite;
+}
+
+.ce-mock-title-bar {
+  width: 33%;
+  height: 16px;
+  background: $sc-highest;
+  border-radius: 4px;
+}
+
+.ce-mock-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  div {
+    height: 8px;
+    background: $sc-highest;
+    border-radius: 4px;
+    width: 100%;
+
+    &.ce-short { width: 80%; }
+  }
+}
+
+.ce-gap-highlight {
+  background: rgba(190,194,255,0.08);
+  border-radius: 8px;
+  padding: 12px;
+  position: relative;
+}
+
+.ce-gap-accent-bar {
+  position: absolute;
+  left: -4px;
+  top: 8px;
+  width: 4px;
+  height: 32px;
+  background: $primary;
+  border-radius: 9999px;
+}
+
+.ce-gap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.ce-mock-sm {
+  width: 25%;
+  height: 12px;
+  background: rgba(190,194,255,0.3);
+  border-radius: 4px;
+}
+
+.ce-gap-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: $primary;
+  background: rgba(190,194,255,0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.ce-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 80px;
+  background: $sc-highest;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.ce-bar {
+  flex: 1;
+  background: rgba(168,140,241,0.4);
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s;
+}
+
+.ce-bar-primary {
+  background: $primary;
+  position: relative;
+
+  .ce-bar-label {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: $primary;
+    white-space: nowrap;
+  }
+}
+
+// ─── How It Works ─────────────────────────────────────────
+.ce-how {
+  padding: 80px 0;
+  background: $sc-lowest;
+}
+
+.ce-section-header {
+  text-align: center;
+  margin-bottom: 80px;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: $on-surface;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 16px;
+    color: $on-sv;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+.ce-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  position: relative;
+
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
+}
+
+.ce-steps-line {
+  position: absolute;
+  top: 40px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, $sc-highest, rgba(190,194,255,0.3), $sc-highest);
+
+  @media (max-width: 768px) { display: none; }
+}
+
+.ce-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: $on-surface;
+    margin: 0;
+  }
+
+  p {
+    font-size: 16px;
+    color: $on-sv;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.ce-step-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 9999px;
+  background: $sc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+
+  .material-symbols-outlined { font-size: 32px; }
+
+  .ce-step-number {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    background: $surface;
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: $on-surface;
+  }
+
+  &--primary .material-symbols-outlined { color: $primary; }
+  &--tertiary .material-symbols-outlined { color: $tertiary; }
+  &--secondary .material-symbols-outlined { color: $secondary; }
+}
+
+// ─── Prepare / Form ───────────────────────────────────────
+.ce-prepare {
+  padding: 80px 0;
+  background: $sc-lowest;
+  position: relative;
+  overflow: hidden;
+}
+
+.ce-prepare-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, $sc-lowest, rgba(30,30,50,0.8), $sc-lowest);
+  z-index: 0;
+}
+
+.ce-form-card {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(17,17,37,0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 48px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+
+  @media (max-width: 768px) { padding: 24px; }
+}
+
+.ce-form-header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: $on-surface;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 16px;
+    color: $on-sv;
+    margin: 0;
+  }
+}
+
+.ce-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ce-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: $on-surface;
+    letter-spacing: 0.01em;
+  }
+}
+
+.ce-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .ce-label-hint {
+    font-size: 14px;
+    font-weight: 400;
+    color: $on-sv;
+  }
+}
+
+.ce-upload-input { display: none; }
+
+.ce-upload {
+  border: 2px dashed $sc-highest;
+  border-radius: 12px;
+  transition: all 0.2s;
+
+  &:hover, &--active {
+    border-color: $primary;
+    background: rgba(190,194,255,0.04);
+  }
+}
+
+.ce-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.ce-upload-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: $sc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+
+  .material-symbols-outlined { color: $on-sv; font-size: 24px; }
+
+  .ce-upload:hover & {
+    background: rgba(190,194,255,0.15);
+    .material-symbols-outlined { color: $primary; }
+  }
+}
+
+.ce-upload-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  span:first-child {
+    font-size: 14px;
+    font-weight: 500;
+    color: $on-sv;
+
+    strong { color: $primary; }
+  }
+
+  span:last-child {
+    font-size: 12px;
+    color: $on-sv;
+  }
+
+  .ce-upload-filename {
+    color: $primary !important;
+    font-weight: 600 !important;
+  }
+}
+
+.ce-textarea {
+  width: 100%;
+  background: $sc-lowest;
+  border: 1px solid $sc-highest;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $on-surface;
+  resize: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &::placeholder { color: rgba(198,197,213,0.4); }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 1px $primary;
+  }
+}
+
+.ce-form-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.ce-btn-submit {
+  padding: 12px 32px;
+  font-size: 14px;
+  gap: 8px;
+
+  .material-symbols-outlined { font-size: 18px; }
+}
+
+.ce-dot-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: $on-primary;
+  display: inline-block;
+  animation: pulse-dot 1.2s ease-in-out infinite;
+
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.4s; }
+}
+
+// ─── Footer ───────────────────────────────────────────────
+.ce-footer {
+  background: $sc-lowest;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 80px 0 0;
+}
+
+.ce-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 48px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.ce-footer-brand {
+  p {
+    font-size: 16px;
+    color: $on-sv;
+    line-height: 1.6;
+    max-width: 320px;
+    margin-top: 16px;
+  }
+}
+
+.ce-footer-links, .ce-footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  span:first-child {
+    font-size: 14px;
+    font-weight: 600;
+    color: $on-surface;
+    margin-bottom: 4px;
+  }
+
+  a {
+    font-size: 16px;
+    color: $on-sv;
+    text-decoration: none;
+    transition: color 0.2s;
+    &:hover { color: $primary; }
+  }
+}
+
+.ce-social-icons {
+  display: flex;
+  gap: 12px;
+
+  a {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background: $sc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+
+    &:hover { background: #8b93ff; }
+
+    .material-symbols-outlined { font-size: 20px; color: $on-sv; }
+  }
+}
+
+.ce-footer-bottom {
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  text-align: center;
+
+  span {
+    font-size: 12px;
+    color: $on-sv;
+  }
+}
+
+// ─── Animations ───────────────────────────────────────────
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.ce-spin { animation: spin 3s linear infinite; display: inline-block; }
