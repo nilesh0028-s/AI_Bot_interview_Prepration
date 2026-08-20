@@ -859,3 +859,378 @@ $outline-v:   #464652;
 }
 
 .ce-spin { animation: spin 3s linear infinite; display: inline-block; }
+
+// ─── Interview Report Page ────────────────────────────────
+.ir-root {
+  display: grid;
+  grid-template-columns: 220px 1fr 260px;
+  min-height: 100vh;
+  background: $bg;
+  color: $on-surface;
+  font-family: 'Inter', sans-serif;
+}
+
+// ─── Sidebar ──────────────────────────────────────────────
+.ir-sidebar {
+  background: $sc-lowest;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  padding: 32px 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.ir-sidebar-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: $outline;
+  letter-spacing: 0.12em;
+  padding: 0 20px 16px;
+}
+
+.ir-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 12px;
+}
+
+.ir-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: $on-sv;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  width: 100%;
+
+  .material-symbols-outlined { font-size: 18px; }
+
+  &:hover { background: $sc; color: $on-surface; }
+
+  &--active {
+    background: rgba(190,194,255,0.12);
+    color: $primary;
+
+    .material-symbols-outlined { color: $primary; }
+  }
+}
+
+// ─── Main Content ─────────────────────────────────────────
+.ir-main {
+  padding: 40px 48px;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.ir-section {}
+
+.ir-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: $on-surface;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.ir-count-badge {
+  font-size: 12px;
+  font-weight: 500;
+  color: $on-sv;
+  background: $sc-high;
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+// ─── Question Cards ───────────────────────────────────────
+.ir-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ir-question-card {
+  background: $sc;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+
+  &--open {
+    border-color: rgba(190,194,255,0.2);
+  }
+}
+
+.ir-question-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 20px;
+  background: transparent;
+  border: none;
+  color: $on-surface;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+
+  &:hover { background: rgba(255,255,255,0.02); }
+}
+
+.ir-q-num {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff6b8a;
+  background: rgba(255,107,138,0.12);
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-top: 2px;
+}
+
+.ir-q-num--behavioral {
+  color: $tertiary;
+  background: rgba(208,188,255,0.12);
+}
+
+.ir-q-text {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  color: $on-surface;
+  line-height: 1.5;
+}
+
+.ir-chevron {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: $outline;
+  margin-top: 2px;
+}
+
+.ir-question-body {
+  padding: 0 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 16px;
+}
+
+.ir-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.ir-tag--intention {
+  color: $primary;
+  background: rgba(190,194,255,0.12);
+  border: 1px solid rgba(190,194,255,0.2);
+}
+
+.ir-tag--answer {
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.2);
+}
+
+.ir-body-text {
+  font-size: 14px;
+  color: $on-sv;
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+
+// ─── Timeline / Roadmap ───────────────────────────────────
+.ir-timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.ir-timeline-item {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+.ir-timeline-dot {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  border: 2px solid #ff6b8a;
+  background: $bg;
+  margin-top: 6px;
+  z-index: 1;
+}
+
+.ir-timeline-line {
+  position: absolute;
+  left: 6px;
+  top: 20px;
+  width: 2px;
+  bottom: 0;
+  background: rgba(255,107,138,0.2);
+}
+
+.ir-timeline-content {
+  flex: 1;
+  padding-bottom: 32px;
+}
+
+.ir-day-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.ir-day-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ff6b8a;
+  background: rgba(255,107,138,0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.ir-day-focus {
+  font-size: 17px;
+  font-weight: 700;
+  color: $on-surface;
+}
+
+.ir-task-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  li {
+    font-size: 14px;
+    color: $on-sv;
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: $outline;
+    }
+  }
+}
+
+// ─── Right Panel ──────────────────────────────────────────
+.ir-right {
+  padding: 32px 24px;
+  background: $sc-lowest;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.ir-right-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: $outline;
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+
+  &--gap { margin-top: 32px; margin-bottom: 16px; }
+}
+
+// ─── Score Ring ───────────────────────────────────────────
+.ir-score-ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 12px;
+
+  svg { display: block; }
+}
+
+.ir-score-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1px;
+}
+
+.ir-score-num {
+  font-size: 40px;
+  font-weight: 800;
+  color: $on-surface;
+  line-height: 1;
+}
+
+.ir-score-pct {
+  font-size: 14px;
+  font-weight: 600;
+  color: $on-sv;
+  align-self: flex-end;
+  margin-bottom: 6px;
+}
+
+.ir-score-caption {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4ade80;
+  margin: 0;
+}
+
+// ─── Skill Gap Tags ───────────────────────────────────────
+.ir-gaps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ir-gap-tag {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.ir-gap--high {
+  background: rgba(255,107,138,0.12);
+  color: #ff6b8a;
+  border: 1px solid rgba(255,107,138,0.25);
+}
+
+.ir-gap--medium {
+  background: rgba(251,191,36,0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(251,191,36,0.2);
+}
+
+.ir-gap--low {
+  background: rgba(74,222,128,0.1);
+  color: #4ade80;
+  border: 1px solid rgba(74,222,128,0.2);
+}
