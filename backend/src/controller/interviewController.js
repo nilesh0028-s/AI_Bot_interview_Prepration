@@ -22,6 +22,7 @@ async function generateInterviewReportController(req, res) {
             behavioralQuestion: report.behavioralQuestions,
             preparationPlan: report.preparationPlan,
             skillGap: report.skillGaps,
+            title: report.title,
             user: req.user.id
         })
 
@@ -44,4 +45,16 @@ async function getInterviewReportById(req, res) {
     }
 }
 
-module.exports = { generateInterviewReportController, getInterviewReportById }
+async function getUserReports(req, res) {
+    try {
+        const reports = await InterviewReport.find({ user: req.user.id })
+            .select("title matchScore jobDescription createdAt")
+            .sort({ createdAt: -1 })
+
+        res.status(200).json({ reports })
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error: error.message })
+    }
+}
+
+module.exports = { generateInterviewReportController, getInterviewReportById, getUserReports }

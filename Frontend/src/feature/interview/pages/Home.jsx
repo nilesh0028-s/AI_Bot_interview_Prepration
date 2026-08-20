@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../component/Navbar'
 import HeroSection from '../component/HeroSection'
 import HowItWorks from '../component/HowItWorks'
 import AnalysisForm from '../component/AnalysisForm'
 import Footer from '../component/Footer'
+import { generateReport } from '../service/interview.api'
 import '../style/interview.scss'
 
 export default function Home() {
@@ -22,16 +24,24 @@ export default function Home() {
     setFormData({ ...formData, resume: e.target.files[0] })
   }
 
+  const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!formData.resume) return alert('Please upload a resume PDF')
     setLoading(true)
-    const data = new FormData()
-    data.append('jobDescription', formData.jobDescription)
-    data.append('selfDescription', formData.selfDescription)
-    data.append('resume', formData.resume)
-    // TODO: wire up API call
-    console.log('submitted', data)
-    setLoading(false)
+    try {
+      const data = new FormData()
+      data.append('jobDescription', formData.jobDescription)
+      data.append('selfDescription', formData.selfDescription)
+      data.append('resume', formData.resume)
+      const res = await generateReport(data)
+      navigate(`/interview/${res.data.report._id}`)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

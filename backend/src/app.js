@@ -18,8 +18,6 @@ app.use(cors({
 app.use('/api/auth',authrouter)
 app.use('/api/interview', interviewrouter)
 
-app.get('/',(req,res)=>{
-    res.send("Hello World")
-})
+
 
 module.exports = app;
