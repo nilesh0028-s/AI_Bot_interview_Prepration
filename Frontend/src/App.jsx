@@ -12,7 +12,12 @@ function App() {
     dispatch(fetchMe())
   }, [])
 
-  if (loading) return <h4>Loading...</h4>
+  if (loading) return (
+    <div style={{ minHeight: '100vh', background: '#111125', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ width: '40px', height: '40px', border: '3px solid #28283d', borderTop: '3px solid #bec2ff', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+      <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
+    </div>
+  )
 
   return <RouterProvider router={router} />
 }

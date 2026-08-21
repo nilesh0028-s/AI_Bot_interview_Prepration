@@ -1234,3 +1234,98 @@ $outline-v:   #464652;
   color: #4ade80;
   border: 1px solid rgba(74,222,128,0.2);
 }
+
+// ─── Recent Reports Section ───────────────────────────────
+.ce-reports {
+  padding: 80px 0;
+  background: $bg;
+}
+
+.ce-reports-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: $on-surface;
+    margin: 0;
+  }
+
+  span {
+    font-size: 13px;
+    color: $on-sv;
+    background: $sc-high;
+    padding: 4px 12px;
+    border-radius: 9999px;
+  }
+}
+
+.ce-reports-empty {
+  font-size: 15px;
+  color: $on-sv;
+  text-align: center;
+  padding: 48px 0;
+}
+
+.ce-reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.ce-report-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: $sc;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+
+  &:hover {
+    border-color: rgba(190,194,255,0.25);
+    transform: translateY(-2px);
+  }
+}
+
+.ce-report-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ce-report-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: $on-surface;
+  line-height: 1.4;
+}
+
+.ce-report-score {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4ade80;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.2);
+  padding: 2px 10px;
+  border-radius: 9999px;
+}
+
+.ce-report-jd {
+  font-size: 13px;
+  color: $on-sv;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ce-report-date {
+  font-size: 12px;
+  color: $outline;
+}
