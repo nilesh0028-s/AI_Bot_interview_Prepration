@@ -10,3 +10,7 @@ export const getUserReports = () =>
 
 export const getReportById = (interviewId) =>
     axios.get(`${BASE_URL}/report/${interviewId}`, { withCredentials: true })
+
+export const downloadReportPdf = (interviewId) =>{
+    return axios.get(`${BASE_URL}/report/${interviewId}/download`, {withCredentials :true,responseType:"blob"})
+}

@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReportById } from "../../redux/interview/interviewThunks";
 import "../style/interview.scss";
+import { downloadReportPdf } from "../service/interview.api";
+
 
 const SECTIONS = [
   { id: "technical", label: "Technical Questions", icon: "code" },
@@ -146,6 +148,27 @@ export default function Interview() {
     dispatch(fetchReportById(interviewId));
   }, [interviewId]);
 
+  const [downloading, setDownloading] = useState(false);
+
+  async function doownloadDocumnet() {
+    try {
+      setDownloading(true);
+      const response = await downloadReportPdf(interviewId);
+      const url = window.URL.createObjectURL(response.data);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `interview-report-${interviewId}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Error downloading PDF:', err);
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   if (loading) return <div className="ir-root" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p>Loading report...</p></div>;
   if (error) return <div className="ir-root" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p>Error: {error}</p></div>;
   if (!report) return null;
@@ -167,6 +190,13 @@ export default function Interview() {
             </button>
           ))}
         </nav>
+
+        <button className="ir-download-btn" onClick={doownloadDocumnet} disabled={downloading}>
+          {downloading
+            ? <><span className="ir-btn-spinner" />Generating...</>
+            : <><span className="material-symbols-outlined">picture_as_pdf</span>Download Resume</>
+          }
+        </button>
       </aside>
 
       {/* Main */}
