@@ -173,9 +173,18 @@
   margin-bottom: 16px;
 }
 
-.auth-field {
+.auth-error {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 8px;
+  background: rgba(255, 107, 138, 0.1);
+  border: 1px solid rgba(255, 107, 138, 0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ff6b8a;
+  font-size: 13px;
+  font-weight: 500;
   margin-bottom: 16px;
+
+  .material-symbols-outlined { font-size: 16px; }
 }

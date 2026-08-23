@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 export default function Login() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { loading } = useSelector(state => state.auth)
+  const { loading, error } = useSelector(state => state.auth)
   const [formData, setFormData] = useState({ email: '', password: '' })
 
   const handleChange = (e) => {
@@ -35,6 +35,8 @@ export default function Login() {
 
         <h2 className="auth-title">Welcome back</h2>
         <p className="auth-subtitle">Sign in to continue your interview prep</p>
+
+        {error && <div className="auth-error"><span className="material-symbols-outlined">error</span>{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="auth-field">
