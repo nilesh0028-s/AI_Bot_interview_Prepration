@@ -11,13 +11,14 @@ export default function HeroSection() {
             <span>Cognitive Analysis Engine v2.4</span>
           </div>
           <h1 className="ce-hero-title">
-            Master Your Next <br />
-            <span className="ce-gradient-text">High-Stakes</span><br />
-            Interview.
+            Land Your Dream Job <br />
+            with <span className="ce-gradient-text">AI-Powered</span><br />
+            Interview Prep.
           </h1>
           <p className="ce-hero-sub">
-            Upload your resume and job description. Our AI analyzes your experience,
-            identifies skill gaps, and generates a personalized, rigorous preparation plan.
+            Upload your resume and job description. Get tailored interview questions,
+            skill gap analysis, a 7-day prep roadmap — and a free ATS-optimized resume
+            built specifically for the role.
           </p>
           <div className="ce-hero-actions">
             <a href="#prepare" className="ce-btn-primary ce-btn-lg">

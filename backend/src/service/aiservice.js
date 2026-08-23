@@ -82,6 +82,13 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
         Resume: ${safeResume}
         Self Description: ${safeSelfDescription}
         Job Description: ${safeJobDescription}
+
+        STRICT REQUIREMENTS:
+        - Generate exactly 10 to 12 technical questions tailored to the job description and candidate's experience
+        - Generate exactly 10 to 12 behavioral questions based on the role and candidate's background
+        - Generate a 7-day preparation plan (day 1 to day 7), each day with a clear focus and 3-5 actionable tasks
+        - Identify all relevant skill gaps between the candidate's profile and the job requirements
+        - Provide a match score between 0 and 100
     `
 
     const interaction = await ai.interactions.create({
@@ -133,7 +140,7 @@ async function generatePdf({resume, selfDescription, jobDescription}){
                         - Use inline CSS only, no external stylesheets or fonts
                         - Font: Arial or Helvetica (ATS safe fonts), body 11px, name 20px, section headings 13px
                         - Color scheme: dark navy #1a1a2e for name and section headings, #333 for body text, white background
-                        - Section headings should have a 2px bottom border in #1a1a2e
+                        - Section headings should have left border accent of 3px solid #1a1a2e instead of bottom border — this looks cleaner and is still ATS friendly since ATS parsers ignore CSS borders entirely
                         - Margins: 28px on all sides, line height 1.5
                         - Keep bullet points concise, max 1 line each
                         - Limit work experience to 2-3 most relevant roles, max 3 bullets each
