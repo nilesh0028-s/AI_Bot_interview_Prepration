@@ -140,7 +140,7 @@ async function generatePdf({resume, selfDescription, jobDescription}){
                         - Use inline CSS only, no external stylesheets or fonts
                         - Font: Arial or Helvetica (ATS safe fonts), body 11px, name 20px, section headings 13px
                         - Color scheme: dark navy #1a1a2e for name and section headings, #333 for body text, white background
-                        - Section headings should have left border accent of 3px solid #1a1a2e instead of bottom border — this looks cleaner and is still ATS friendly since ATS parsers ignore CSS borders entirely
+                        - Section headings should have a thin 1px bottom border in #cccccc — subtle, not bold, just enough to visually separate sections
                         - Margins: 28px on all sides, line height 1.5
                         - Keep bullet points concise, max 1 line each
                         - Limit work experience to 2-3 most relevant roles, max 3 bullets each
