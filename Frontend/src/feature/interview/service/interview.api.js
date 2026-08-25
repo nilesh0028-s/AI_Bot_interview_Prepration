@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = 'http://localhost:3000/api/interview'
+const BASE_URL = '/api/interview'
 
 export const generateReport = (formData) =>
     axios.post(BASE_URL, formData, { withCredentials: true })
