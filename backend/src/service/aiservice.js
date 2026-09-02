@@ -176,7 +176,7 @@ async function generatePdf({ resume, selfDescription, jobDescription }) {
 async function generatePdfFromHtml(htmlContent) {
     console.log("[generatePdfFromHtml] START | Launching Chromium...")
 
-    const executablePath = await chromium.executablePath()
+    const executablePath = await chromium.executablePath
     console.log("[generatePdfFromHtml] Chromium path:", executablePath)
 
     const browser = await puppeteer.launch({
