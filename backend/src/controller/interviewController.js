@@ -64,19 +64,21 @@ async function getPdf(req, res){
 
         if (!report) return res.status(404).json({ message: "Report not found" })
 
-       const docs = await generatePdf({resume: report.resume, selfDescription: report.selfDescription, jobDescription: report.jobDescription})
+        const docs = await generatePdf({resume: report.resume, selfDescription: report.selfDescription, jobDescription: report.jobDescription})
 
-       const pdfBuffer = await generatePdfFromHtml(docs);
+        const pdfBuffer = await generatePdfFromHtml(docs);
 
-         res.set({
-        "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename=resume_${interviewId}.pdf`
-    })
+        res.set({
+            "Content-Type": "application/pdf",
+            "Content-Disposition": `attachment; filename=resume_${interviewId}.pdf`
+        })
 
-    res.send(pdfBuffer)
+        res.send(pdfBuffer)
 
     } catch (error) {
+        console.error("getPdf error:", error)
         res.status(500).json({ message: "Server error", error: error.message })
     }
 }
-module.exports = { generateInterviewReportController, getInterviewReportById, getUserReports ,getPdf}
+
+module.exports = { generateInterviewReportController, getInterviewReportById, getUserReports, getPdf }
